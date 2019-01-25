@@ -1,5 +1,4 @@
 const actionTypeCSS = `
-  font-size: 1.2em;
   font-weight: bold;
   padding: 0m 1em;
 `;
@@ -25,13 +24,16 @@ const logger = {
     this.beforeState = state;
   },
   after(state, action) {
-    console.group(`%cACTION TYPE ${action.type}`, actionTypeCSS);
-    console.log('%cBefore', prevCSS);
+    console.groupCollapsed(`%cACTION TYPE ${action.type}`, actionTypeCSS);
+    console.groupCollapsed('%c before', prevCSS);
     console.log(this.beforeState);
-    console.log('%cPayload', payloadCSS);
+    console.groupEnd();
+    console.groupCollapsed('%c reducer', payloadCSS);
     console.log(action);
-    console.log('%cAfter', nextCSS);
+    console.groupEnd();
+    console.groupCollapsed('%c after', nextCSS);
     console.log(state);
+    console.groupEnd();
     console.groupEnd();
   }
 };

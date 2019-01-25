@@ -13,7 +13,6 @@ const Sample = () => {
   const decrement = useCallback(() => {
     dispatch(Actions.decrement());
   });
-
   return (
     <>
       count : {state.count}
